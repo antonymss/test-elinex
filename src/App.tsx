@@ -1,26 +1,43 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import {Header} from "./components/common/header/Header";
+import {Navigation} from "./components/common/navigation/Navigation";
+import {Routes} from "./routes/Routes";
+import {Footer} from "./components/common/footer/Footer";
+import {LinearProgress} from "@material-ui/core";
+import {makeStyles} from "@material-ui/core/styles";
+import {useSelector} from "react-redux";
+import {RootStateType} from "./bll/store";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const useStyles = makeStyles({
+    root: {
+        width: '100%',
+        position: 'absolute',
+        top: '64px',
+        backgroundColor: '#D2F700',
+    },
+    bar2Indeterminate: {
+        backgroundColor: '#A69500'
+    },
+    bar1Indeterminate: {
+        backgroundColor: '#FFBC00'
+    }
+})
+
+const App = () => {
+
+    const isLoad = useSelector<RootStateType, boolean | undefined>(state => state.process.isLoading)
+
+    const classes = useStyles()
+
+    return (<>
+        <Header/>
+        {isLoad && <LinearProgress classes={classes}/> }
+        <div style={{display: 'flex'}}>
+            <Navigation/>
+            <Routes/>
+        </div>
+        <Footer/>
+    </>)
 }
 
 export default App;
