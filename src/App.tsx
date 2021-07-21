@@ -13,13 +13,13 @@ const useStyles = makeStyles({
         width: '100%',
         position: 'absolute',
         top: '64px',
-        backgroundColor: '#D2F700',
+        backgroundColor: '#f70025',
     },
     bar2Indeterminate: {
-        backgroundColor: '#A69500'
+        backgroundColor: '#0cd8ea'
     },
     bar1Indeterminate: {
-        backgroundColor: '#FFBC00'
+        backgroundColor: '#f6f6f5'
     }
 })
 
